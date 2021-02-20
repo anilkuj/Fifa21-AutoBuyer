@@ -406,6 +406,8 @@
         var $buyerLog = jQuery(nameAutoBuyerFoundLog);
         $progressLog.val("");
         $buyerLog.val("");
+        window.profit = 0;
+        window.searchCount = 0;
     };
 
     utils.JS.inherits(UTAutoBuyerViewController, UTMarketSearchFiltersViewController);
@@ -654,7 +656,7 @@
                     '.ut-content-container .ut-content { max-height: none !important; }' +
                     '</style>' +
                     '<div id="' + nameInfoWrapper.substring(1) + '" class="ut-navigation-bar-view navbar-style-landscape">' +
-                    '   <h1 class="title">AUTOBUYER STATUS: <span id="' + nameAbStatus.substring(1) + '"></span> | REQUEST COUNT: <span id="' + nameAbRequestCount.substring(1) + '">0</span></h1>' +
+                    '   <h1 class="title">AUTOBUYER STATUS: <span id="ab_status"></span> | REQUEST COUNT: <span id="' + nameAbRequestCount.substring(1) + '">0</span> | PROFIT: <span id="profit_count">0</span></h1>' +
                     '   <div class="view-navbar-clubinfo">' +
                     '       <div class="view-navbar-clubinfo-data">' +
                     '           <div class="view-navbar-clubinfo-name">' +
@@ -1687,6 +1689,7 @@
     window.searchCount = 0;
     createAutoBuyerInterface();
     addTabItem();
+    window.profit = 0
 
     window.getMaxSearchBid = function (min, max) {
         return Math.round((Math.random() * (max - min) + min) / 1000) * 1000;
@@ -1803,6 +1806,9 @@
         if ($(nameAbStopAfter).val()) {
             stopAfter = $(nameAbStopAfter).val();
         }
+        
+        jQuery('#profit_count').css('color', '#2cbe2d').html(window.profit);
+        
         let interval = stopAfter[stopAfter.length - 1].toUpperCase();
         let time = parseInt(stopAfter.substring(0, stopAfter.length - 1));
 
@@ -2329,6 +2335,7 @@
                     let sym = " W:" + window.format_string(window.winCount.toString(), 4);
                     writeToLog(sym + " | " + player_name + ' | ' + price_txt + ((isBin) ? ' | buy | success | selling for: ' + sellPrice : ' | bid | success |' + ' selling for: ' + sellPrice));
                     window.play_audio('card_won');
+                    window.profit += (sellPrice/100*95) - price;
                     window.sellRequestTimeout = window.setTimeout(function () {
                         services.Item.list(player, window.getSellBidPrice(sellPrice), sellPrice, 3600);
                     }, window.getRandomWait());
