@@ -4,6 +4,7 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url] 
+[![Total Downloads](https://img.shields.io/github/downloads/chithakumar13/Fifa21-AutoBuyer/total.svg)]()
 [![LinkedIn][linkedin-shield]][linkedin-url] 
 <p align="center"> 
   <h3 align="center">Fifa21 AutoBuyer</h3>
@@ -13,8 +14,18 @@
     <br />  
     <br /> 
     <a href="https://github.com/chithakumar13/Fifa21-AutoBuyer/issues">Report Bug</a>
-    �
+    ·
     <a href="https://github.com/chithakumar13/Fifa21-AutoBuyer/issues">Request Feature</a>
+  .
+  <a href="https://www.youtube.com/channel/UC5eLkjmLU2TcE4oiJM9PsyA?sub_confirmation=1">Subscribe</a>
+  
+  # Must Read :no_entry_sign:
+  
+  These tool is developed to demonstrate how someone can develop script to break our web application by automating stuffs and only for learning purpose.
+  
+   EA might (soft) ban from using transfer market in web app for using this tool. Continuously soft ban might lead to permanent ban as well. Also use of tools like this to gain advantage over other players is not ethically right.  
+   
+   Use this tool at your own risk, any developers contributing to this repo won’t held responsibility if your account gets banned.
   </p>
 </p>
 
@@ -22,10 +33,12 @@
 ## Table of Contents
 
 * [Installation](#installation) 
+* [AutoSolve Captcha SetUp](#Captcha) 
 * [Usage](#Usage)
 * [Prerequisites](#prerequisites) 
+* [Telegram Installation Guide](#Telegram-Installation-Guide) 
 * [Roadmap](#Roadmap)  
-* [Developer Guide](#DevGuide) 
+* [Developer Guide](#Developer-Guide) 
 * [Contributing](#contributing) 
 * [Contact](#contact)
 
@@ -40,6 +53,11 @@
  
 Now in Ultimate Team Web App, new menu will be added as AutoBuyer. 
 
+## Captcha
+
+### AutoSolve Captcha Setup
+  * Follow this [video](https://www.youtube.com/watch?v=9p_IMe52LBo) if you are not sure how to set it up.
+
 <!-- Usage -->
 ## Usage 
 
@@ -48,12 +66,24 @@ Now in Ultimate Team Web App, new menu will be added as AutoBuyer.
 ### Sell Price 
 * If specified the autobuyer will list the bought item for the specified price.
 * The tool will list all the cards in transfer target, make sure to move your cards to the club before running the tool to avoid losing the card. 
+* Give Sell Price as -1 to move to transfer list without selling.
 
 ### Buy Price
 * If specified the autobuyer will buy the card matching the search critieria for the price less than or equal to specified price.
 
 ### Bid Price
 * If specified the autobuyer will bid on the card matching the search critieria for the price less than or equal to specified price.
+
+### Bid Exact
+* By default tool will bid for the lowest possible price and gradually increase the bid , if this flag is enabled bot will directly bid for the specified bid price.
+
+### Bid items expiring in:
+* If specified tool will only bid on items expiring in the given time range.
+* Default Value (`1H`) (S for seconds, M for Minutes, H for hours).
+
+### Relist Unsold Items:
+* If enabled bot will periodically check and relist expired item for the previous specified price
+### * Note : This will relist all expired items , not only the item which bot list. So check the Transfer List before enabling this to avoid losing cards
 
 ### Wait Time
 * The autobuyer will wait for the specified time before making the next search request.
@@ -71,34 +101,74 @@ Now in Ultimate Team Web App, new menu will be added as AutoBuyer.
 * If specified the tool will automatically stop after running the tool foe the specified interval.
 * Default Value (`1H`) (S for seconds, M for Minutes, H for hours).
 
-### Concurrent Search Request
-* If specified the tool will send multiple search request each time.
-* Default Value (`1`).
-* Allowed Value (`1 to 4`).
-
 ### Pause For
 * The parameter has a dependency on Cycle Amount 
 * The tool will pause for the specified interval, if the the number of search request in the given cycle matches the specified cycle amount.
-* Default Value (`0S`) (S for seconds, M for Minutes, H for hours). 
+* Default Value (`0-0S`) (S for seconds, M for Minutes, H for hours). 
 
-### Cycle Amount 
+### Pause Cycle 
 * Indicates the amount of search request to be made before pausing the tool.
 * Default Value (`10`). 
+
+### Rating Filtering
+* If specified tool will bid only on items which has rating with in the specified range.
+* Default Value (`10` - `100`). 
+
+### Random Min Bid
+* If enabled tool will randomize min bid for each search to avoid cached result. 
+
+### Random Min Buy
+* If enabled tool will randomize min buy for each search to avoid cached result. 
+
+### Close On Captcha Trigger
+* If enabled tool will close the web app when Captcha gets triggered. 
+
+### Delay After Buy
+* If enabled tool will add 1 second delay after each buy request.
+
+### Error Codes to stop bot
+* List of error code on which bot should stop, value should be in csv format.
+* Ex - 421,461,512
+
+### Sound Notification
+* If enabled tool will gives sound notification for actions like buy card / captcha trigger etc... 
 
 ## Prerequisites
 
 * To use this tool, the user should have access to the transfer market. 
-* Hence play the required number of games to get access to the transfer market before trying this tool.   
+* Hence play the required number of games to get access to the transfer market before trying this tool. 
+
+<!-- Telegram -->
+## Telegram-Installation-Guide
+
+* Install Telegram
+* Add @BotFather as a contact in telegram
+* Send BotFather /newbot
+* Type in your individual details like name etc.
+* Follow the prompts, and finally copy it’s HTTP API Token
+* Add your bot as a contact
+* Send /start to your bot
+* Visit this URL. https://api.telegram.org/botXXX:YYYYY/getUpdates (replace the XXX: YYYYY with your BOT HTTP API Token you just got from the Telegram B otFather)
+* Here you can find your chat id (this process can take some minutes) --> e.g. "chat":{"id":133333338,"first_name":"John","last_name":"Player"
+* Now you can add your bot token and chat id at the notification settings inside the bot GUI (near the Bottom)
 
 <!-- ROADMAP -->
 ## Roadmap
 
 See the [open issues](https://github.com/chithakumar13/Fifa21-AutoBuyer/issues) for a list of proposed features (and known issues).
 
+## 💬 Community
+
+If you are looking for help or any new feature request, join our discord group 
+
+<img src="https://img.shields.io/discord/768336764447621122?color=green&label=Discord&logo=discord&logoColor=white">
+
+<a href="https://discord.gg/cktHYmp">Join</a>
+
 <!-- DevGuide -->
 ## Developer-Guide
 
-Will be added soon.
+<a href="https://discord.gg/AHqdCWRw69">Join this discord channel</a> 
 
 <!-- CONTRIBUTING -->
 ## Contributing
