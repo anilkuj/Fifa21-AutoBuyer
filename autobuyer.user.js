@@ -656,7 +656,7 @@
                     '.ut-content-container .ut-content { max-height: none !important; }' +
                     '</style>' +
                     '<div id="' + nameInfoWrapper.substring(1) + '" class="ut-navigation-bar-view navbar-style-landscape">' +
-                    '   <h1 class="title">AUTOBUYER STATUS: <span id="ab_status"></span> | REQUEST COUNT: <span id="' + nameAbRequestCount.substring(1) + '">0</span> | PROFIT: <span id="profit_count">0</span></h1>' +
+                    '   <h1 class="title">AUTOBUYER STATUS: <span id="nameAbStatus"></span> | REQUEST COUNT: <span id="' + nameAbRequestCount.substring(1) + '">0</span> | PROFIT: <span id="profit_count">0</span></h1>' +
                     '   <div class="view-navbar-clubinfo">' +
                     '       <div class="view-navbar-clubinfo-data">' +
                     '           <div class="view-navbar-clubinfo-name">' +
